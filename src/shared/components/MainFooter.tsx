@@ -18,7 +18,7 @@ export function MainFooter() {
           {/* Brand & Mission */}
           <div className="space-y-4">
             <h1 className="text-sm font-bold uppercase tracking-widest text-white/60">
-              SERVICES FROM
+              SERVICES
             </h1> 
             <h3 className="font-brand text-2xl font-bold tracking-wider text-white">
               {BRAND_NAME}

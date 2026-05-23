@@ -13,9 +13,9 @@ export function UserToggle() {
 
   return (
     <div className="flex flex-col items-end gap-1">
-      <span className="text-xs font-medium text-[color:var(--color-muted)] uppercase tracking-wide">
+      {/* <span className="text-xs font-medium text-[color:var(--color-muted)] uppercase tracking-wide">
         Viewing prices for
-      </span>
+      </span> */}
       <div className="inline-flex rounded-full bg-[color:var(--color-primary)] p-1 shadow-sm">
         {options.map((option) => (
           <button

@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-import Image from "next/image";
 import { HelpCircle } from "lucide-react";
 import { UserToggle } from "@/features/user";
 import { Container } from "./Container";
@@ -24,16 +23,6 @@ export function ServicePageShell({ contentTitle, children }: ServicePageShellPro
             <span className="font-brand text-[0.65rem] font-bold uppercase tracking-[0.2em] text-zinc-500">
               Official Travel Desk
             </span>
-            <div className="flex items-center">
-              <Image
-                src="/img/Sarovar_Hotels_Logo.png"
-                alt="Vandhara Sarovar Premiere Resort Logo"
-                width={160}
-                height={36}
-                className="object-contain"
-                priority
-              />
-            </div>
           </div>
           <UserToggle />
         </div>
@@ -41,7 +30,7 @@ export function ServicePageShell({ contentTitle, children }: ServicePageShellPro
 
       <Container>
         <header className="pt-4 text-center">
-          <p className="text-xs uppercase tracking-[0.35em] text-zinc-500">Services from</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-zinc-500">Services</p>
           <h1 className="mt-2 font-brand text-2xl font-semibold tracking-wide text-[color:var(--color-primary)] md:text-3xl">
             {BRAND_NAME}
           </h1>
