@@ -14,8 +14,8 @@ export const taxiData: TaxiData = {
       title: "Near By Railway Station Transfers",
       subtitle: RESORT_SUBTITLE,
       routes: [
-        { location: "Ramnagar",   pickupDrop: "Pickup / Drop", price: { dzire: 1500, ertiga: 1875, innova: 2875 }, extraWaiting: { pricePerHour: 300 } },
-        { location: "Kathgodam", pickupDrop: "Pickup / Drop", price: { dzire: 4000, ertiga: 5000, innova: 6875 }, extraWaiting: { pricePerHour: 300 } },
+        { location: "Ramnagar",  pickupDrop: "Pickup / Drop", price: { dzire: 1500, ertiga: 1875, innova: 2875 }, extraWaiting: { pricePerHour: 300 } },
+        { location: "Kathgodam", pickupDrop: "Pickup / Drop", price: { dzire: 4000, ertiga: 5200, innova: 6875 }, extraWaiting: { pricePerHour: 300 } },
         { location: "Haldwani",  pickupDrop: "Pickup / Drop", price: { dzire: 4000, ertiga: 5250, innova: 6875 }, extraWaiting: { pricePerHour: 300 } },
         { location: "Lal Kuan",  pickupDrop: "Pickup / Drop", price: { dzire: 4375, ertiga: 5375, innova: 7250 }, extraWaiting: { pricePerHour: 300 } },
         { location: "Kashipur",  pickupDrop: "Pickup / Drop", price: { dzire: 3125, ertiga: 3750, innova: 5625 }, extraWaiting: { pricePerHour: 300 } },
