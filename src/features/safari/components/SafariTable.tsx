@@ -13,6 +13,7 @@ import {
   RESORT_NAME,
 } from "@/shared";
 import { useUser } from "@/features/user";
+import { SafariGateTimingsWidget } from "./SafariGateTimingsWidget";
 
 export function SafariTable() {
   const { userType } = useUser();
@@ -45,6 +46,11 @@ export function SafariTable() {
             {safariData.header.bufferZones.join(" • ")}
           </p>
         </div>
+      </div>
+
+      {/* ── DRY Season-Aware Gate Timings & Protocols Widget ── */}
+      <div id="gate-timings-widget" className="scroll-mt-20">
+        <SafariGateTimingsWidget />
       </div>
 
       {/* ── Rate sections ── */}
