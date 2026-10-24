@@ -1,3 +1,5 @@
+import { getFormattedLiveShifts } from "@/lib/safari-timings";
+
 export const BRAND_NAME = "Corbett Safari";
 export const BRAND_EMAIL = "";
 export const CURRENCY = "INR";
@@ -16,3 +18,25 @@ export const RESORT_TO_RAMNAGAR = `${RESORT_NAME} To Ramnagar`;
 export const RESORT_TO_DHANGARI = `${RESORT_NAME} To Dhangari Gate`;
 export const RESORT_SUBTITLE = `Of ${RESORT_NAME}, ${RESORT_LOCATION_SHORT}`;
 export const RESORT_INCLUSION_WITH_CAB = `Include: Gypsy, Guide, Permit, ${RESORT_NAME} to Ramnagar Pickup & Drop by Cab`;
+
+/**
+ * Site Config / Business Hours:
+ * Morning and Evening shifts derived dynamically from getFormattedLiveShifts()
+ */
+export const getSiteBusinessHours = (date: Date = new Date()) => {
+  const shifts = getFormattedLiveShifts(date);
+  return {
+    seasonLabel: shifts.activeScheduleLabel,
+    seasonName: shifts.activeSeasonName,
+    morningShift: shifts.morning,
+    eveningShift: shifts.afternoon,
+    morningCutoff: shifts.morningLastEntry,
+    eveningCutoff: shifts.afternoonLastEntry,
+    travelDeskHours: "06:00 AM – 09:30 PM (Daily)",
+    gateRuleNotice: "Gate boom barriers automatically lock at last entry deadline under Uttarakhand Forest Department protocols.",
+    isDhikalaOpen: shifts.isDhikalaOpen,
+    dhikalaStatus: shifts.dhikalaStatusLabel,
+  };
+};
+
+export const SITE_BUSINESS_HOURS = getSiteBusinessHours();
