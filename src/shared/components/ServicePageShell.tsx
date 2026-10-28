@@ -21,7 +21,7 @@ export function ServicePageShell({ contentTitle, children }: ServicePageShellPro
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-3 py-2 lg:px-6">
           <div className="flex flex-col justify-center">
             <span className="font-brand text-[0.65rem] font-bold uppercase tracking-[0.2em] text-zinc-500">
-              Official Travel Desk
+              Safari Desk
             </span>
           </div>
           <UserToggle />
