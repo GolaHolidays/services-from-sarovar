@@ -81,7 +81,6 @@ export function SafariGateTimingsWidget({
 
   const selectedSeason: SafariSeasonSchedule = SAFARI_SEASONS[selectedSeasonId];
   const dhikalaSchedule = getDhikalaCanterSchedule();
-  const isSelectedSeasonActive = selectedSeasonId === currentSeasonId;
 
   return (
     <section

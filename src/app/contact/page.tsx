@@ -4,17 +4,13 @@ import { ServicePageShell, CallHeader } from "@/shared";
 import {
   getFormattedLiveShifts,
   getResortTransitAdvisory,
-  GATE_DEADLINE_PROTOCOL,
 } from "@/lib/safari-timings";
 import {
-  BRAND_NAME,
   CONTACT_DISPLAY,
   CONTACT_PHONE,
   WHATSAPP_NUMBER,
   BRAND_EMAIL,
   RESORT_ADDRESS,
-  RESORT_NAME,
-  RESORT_LOCATION_SHORT,
   SITE_BUSINESS_HOURS,
 } from "@/shared/constants/ui.constants";
 import {
@@ -22,8 +18,6 @@ import {
   MessageSquare,
   Clock,
   MapPin,
-  Mail,
-  ShieldCheck,
   Lock,
   Sun,
   Sunset,

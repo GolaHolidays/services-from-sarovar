@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ServicePageShell, SinglePriceCell, Table, WarningBanner, CallHeader, RESORT_NAME } from "@/shared";
+import { ServicePageShell, SinglePriceCell, Table, WarningBanner, CallHeader } from "@/shared";
 import { safariData } from "@/data-source";
 import { getDhikalaCanterSchedule, DHIKALA_CANTER_DATA } from "@/lib/safari-timings";
-import { Compass, ShieldCheck, Clock, MapPin, AlertTriangle, Users, IdCard } from "lucide-react";
+import { Compass, ShieldCheck, AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dhikala Canter Safari Timings & Rates | Corbett Core Zone",

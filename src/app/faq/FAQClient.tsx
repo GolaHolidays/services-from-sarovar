@@ -13,22 +13,14 @@ import {
   Car,
   Calendar,
   CreditCard,
-  ShieldCheck,
   AlertCircle,
-  Clock,
   Sparkles,
-  ArrowRight,
-  Check,
 } from "lucide-react";
 import {
   CONTACT_PHONE,
   WHATSAPP_NUMBER,
   CONTACT_DISPLAY,
-  RESORT_NAME,
-  RESORT_ADDRESS,
-  RESORT_DISTANCE_FROM_RAMNAGAR,
 } from "@/shared/constants/ui.constants";
-import { ALL_SAFARI_ZONES, DHIKALA_CANTER_DATA } from "@/lib/safari-timings";
 
 export type FAQCategory = "all" | "booking" | "zones" | "transport" | "planning" | "pricing";
 
@@ -53,37 +45,10 @@ export const CATEGORIES: { id: FAQCategory; label: string; icon: React.ElementTy
   { id: "pricing", label: "Pricing & Inquiries", icon: CreditCard },
 ];
 
-export function FAQClient() {
-  const [selectedCategory, setSelectedCategory] = useState<FAQCategory>("all");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [openIds, setOpenIds] = useState<Record<string, boolean>>({
-    "book-safari": true, // First question open by default
-  });
-
-  const toggleItem = (id: string) => {
-    setOpenIds((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
-
-  const expandAll = () => {
-    const allOpen: Record<string, boolean> = {};
-    faqList.forEach((item) => {
-      allOpen[item.id] = true;
-    });
-    setOpenIds(allOpen);
-  };
-
-  const collapseAll = () => {
-    setOpenIds({});
-  };
-
-  const faqList: FAQItemData[] = useMemo(
-    () => [
-      // ─────────────────────────────────────────────────────────────
-      // Category 1: Safari Booking & Permits
-      // ─────────────────────────────────────────────────────────────
+export const FAQ_LIST: FAQItemData[] = [
+  // ─────────────────────────────────────────────────────────────
+  // Category 1: Safari Booking & Permits
+  // ─────────────────────────────────────────────────────────────
       {
         id: "book-safari",
         category: "booking",
@@ -761,13 +726,37 @@ export function FAQClient() {
           </div>
         ),
       },
-    ],
-    []
-  );
+];
+
+export function FAQClient() {
+  const [selectedCategory, setSelectedCategory] = useState<FAQCategory>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [openIds, setOpenIds] = useState<Record<string, boolean>>({
+    "book-safari": true, // First question open by default
+  });
+
+  const toggleItem = (id: string) => {
+    setOpenIds((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const expandAll = () => {
+    const allOpen: Record<string, boolean> = {};
+    FAQ_LIST.forEach((item) => {
+      allOpen[item.id] = true;
+    });
+    setOpenIds(allOpen);
+  };
+
+  const collapseAll = () => {
+    setOpenIds({});
+  };
 
   // Filtered FAQs based on Category and Search Query
   const filteredFAQs = useMemo(() => {
-    return faqList.filter((item) => {
+    return FAQ_LIST.filter((item) => {
       // Category filter
       if (selectedCategory !== "all" && item.category !== selectedCategory) {
         return false;
@@ -783,7 +772,7 @@ export function FAQClient() {
       }
       return true;
     });
-  }, [faqList, selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery]);
 
   return (
     <div className="space-y-7">
@@ -835,7 +824,7 @@ export function FAQClient() {
         {/* Meta Bar: Match count & Expand/Collapse toggle */}
         <div className="flex items-center justify-between border-t border-stone-100 pt-3 text-xs text-stone-500">
           <div>
-            Showing <strong className="text-stone-900">{filteredFAQs.length}</strong> of {faqList.length} questions
+            Showing <strong className="text-stone-900">{filteredFAQs.length}</strong> of {FAQ_LIST.length} questions
             {searchQuery && (
               <span>
                 {" "}for &ldquo;<span className="text-emerald-900 font-medium">{searchQuery}</span>&rdquo;
