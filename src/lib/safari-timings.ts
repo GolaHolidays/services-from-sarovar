@@ -410,3 +410,72 @@ export function getAllSeasonsList(): SafariSeasonSchedule[] {
     SAFARI_SEASONS.summer,
   ];
 }
+
+export interface ResortTransitAdvisory {
+  seasonId: SeasonId;
+  seasonName: string;
+  seasonLabel: string;
+  morningDeparture: string;
+  afternoonDeparture: string;
+  gateOpeningMorning: string;
+  gateOpeningAfternoon: string;
+  morningCutoff: string;
+  afternoonCutoff: string;
+  departureNotes: string;
+}
+
+/**
+ * 4. getResortTransitAdvisory(dateOrSeasonId: Date | SeasonId = new Date())
+ * Dynamically computes resort pickup and transit windows for guests travelling
+ * from the resort / Ramnagar to safari gates (~27–46 Km, 60–90 mins drive),
+ * preventing gate lockouts under strict forest barrier cutoffs.
+ */
+export function getResortTransitAdvisory(
+  dateOrSeasonId: Date | SeasonId = new Date()
+): ResortTransitAdvisory {
+  const schedule =
+    typeof dateOrSeasonId === "string"
+      ? SAFARI_SEASONS[dateOrSeasonId]
+      : getActiveSafariSchedule(dateOrSeasonId);
+
+  let morningDeparture = "05:00 AM – 05:30 AM";
+  let afternoonDeparture = "12:30 PM – 01:00 PM";
+  let departureNotes =
+    "Departs resort 60–90 mins prior to gate opening to allow scenic forest transit and mandatory document verification before cutoff.";
+
+  switch (schedule.id) {
+    case "autumn":
+      morningDeparture = "05:00 AM – 05:30 AM";
+      afternoonDeparture = "12:30 PM – 01:00 PM";
+      departureNotes = `For ${schedule.morning.gateOpens} gate opening (strict cutoff at ${schedule.morning.lastEntry}). Depart resort at 05:00 AM – 05:30 AM.`;
+      break;
+    case "winter":
+      morningDeparture = "05:00 AM – 05:30 AM";
+      afternoonDeparture = "12:00 PM – 12:30 PM";
+      departureNotes = `For ${schedule.morning.gateOpens} gate opening (strict cutoff at ${schedule.morning.lastEntry}). Afternoon departs earlier at 12:00 PM for ${schedule.afternoon.gateOpens} gate opening.`;
+      break;
+    case "spring":
+      morningDeparture = "04:45 AM – 05:15 AM";
+      afternoonDeparture = "12:30 PM – 01:00 PM";
+      departureNotes = `For ${schedule.morning.gateOpens} dawn gate opening (strict cutoff at ${schedule.morning.lastEntry}). Depart resort at 04:45 AM – 05:15 AM.`;
+      break;
+    case "summer":
+      morningDeparture = "04:00 AM – 04:30 AM";
+      afternoonDeparture = "01:30 PM – 02:00 PM";
+      departureNotes = `For early ${schedule.morning.gateOpens} sunrise gate opening (strict cutoff at ${schedule.morning.lastEntry}). Depart resort at 04:00 AM – 04:30 AM to beat gate closure.`;
+      break;
+  }
+
+  return {
+    seasonId: schedule.id,
+    seasonName: schedule.name,
+    seasonLabel: schedule.label,
+    morningDeparture,
+    afternoonDeparture,
+    gateOpeningMorning: schedule.morning.gateOpens,
+    gateOpeningAfternoon: schedule.afternoon.gateOpens,
+    morningCutoff: schedule.morning.lastEntry,
+    afternoonCutoff: schedule.afternoon.lastEntry,
+    departureNotes,
+  };
+}
