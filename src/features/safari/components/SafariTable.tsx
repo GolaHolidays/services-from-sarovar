@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { safariData } from "@/data-source";
 import {
   Table,
@@ -11,13 +12,27 @@ import {
   PolicyFooter,
   CallHeader,
   RESORT_NAME,
+  RESORT_INCLUSION_WITH_CAB,
 } from "@/shared";
 import { useUser } from "@/features/user";
 import { SafariGateTimingsWidget } from "./SafariGateTimingsWidget";
+import {
+  getActiveSafariSchedule,
+  getDhikalaCanterSchedule,
+  SAFARI_SEASONS,
+  type SeasonId,
+} from "@/lib/safari-timings";
 
 export function SafariTable() {
   const { userType } = useUser();
   const sections = safariData[userType];
+
+  const currentActiveSchedule = getActiveSafariSchedule();
+  const [selectedSeasonId, setSelectedSeasonId] = useState<SeasonId>(
+    currentActiveSchedule.id
+  );
+  const selectedSeason = SAFARI_SEASONS[selectedSeasonId];
+  const dhikalaSchedule = getDhikalaCanterSchedule();
 
   return (
     <div className="space-y-8">
@@ -50,7 +65,10 @@ export function SafariTable() {
 
       {/* ── DRY Season-Aware Gate Timings & Protocols Widget ── */}
       <div id="gate-timings-widget" className="scroll-mt-20">
-        <SafariGateTimingsWidget />
+        <SafariGateTimingsWidget
+          selectedSeasonId={selectedSeasonId}
+          onSeasonChange={setSelectedSeasonId}
+        />
       </div>
 
       {/* ── Rate sections ── */}
@@ -89,8 +107,22 @@ export function SafariTable() {
                         <th>Zone</th>
                         <th>Rate</th>
                         <th>Rate + 5% GST</th>
-                        <th>Morning Slot</th>
-                        <th>Afternoon Slot</th>
+                        <th>
+                          <div className="flex flex-col">
+                            <span>Morning Slot</span>
+                            <span className="text-[0.65rem] font-normal tracking-normal text-stone-500 lowercase">
+                              {selectedSeason.label}
+                            </span>
+                          </div>
+                        </th>
+                        <th>
+                          <div className="flex flex-col">
+                            <span>Afternoon Slot</span>
+                            <span className="text-[0.65rem] font-normal tracking-normal text-stone-500 lowercase">
+                              {selectedSeason.label}
+                            </span>
+                          </div>
+                        </th>
                         <th>
                           {table.inclusionText?.toLowerCase().includes("safari gate")
                             ? `${RESORT_NAME} to Safari Gate Distance`
@@ -99,19 +131,59 @@ export function SafariTable() {
                       </tr>
                     </thead>
                     <tbody>
-                      {table.rateRows.map((row) => (
-                        <tr key={`${section.id}-${tableIndex}-${row.zone}`}>
-                          <td className="px-4 py-3 font-bold text-[color:var(--color-primary)]">
-                            {row.zone}
-                          </td>
-                          <PriceCell base={row.rate} final={row.gstRate} />
-                          <td className="px-4 py-3 text-sm text-zinc-700">{row.timing.morning}</td>
-                          <td className="px-4 py-3 text-sm text-zinc-700">{row.timing.afternoon}</td>
-                          <td className="px-4 py-3 text-sm text-[color:var(--color-muted)]">
-                            {row.distanceFromRamnagar}
-                          </td>
-                        </tr>
-                      ))}
+                      {table.rateRows.map((row) => {
+                        const isDhikala = row.zone.toLowerCase().includes("dhikala");
+                        const morningShift = isDhikala
+                          ? dhikalaSchedule.activeMorning
+                          : selectedSeason.morning.shiftSummary;
+                        const afternoonShift = isDhikala
+                          ? dhikalaSchedule.activeAfternoon
+                          : selectedSeason.afternoon.shiftSummary;
+
+                        return (
+                          <tr key={`${section.id}-${tableIndex}-${row.zone}`}>
+                            <td className="px-4 py-3 font-bold text-[color:var(--color-primary)]">
+                              {row.zone}
+                            </td>
+                            <PriceCell base={row.rate} final={row.gstRate} />
+                            <td className="px-4 py-3 text-sm font-semibold text-zinc-800">
+                              <div>{morningShift}</div>
+                              {isDhikala ? (
+                                <span className="block text-[0.68rem] font-normal text-emerald-700">
+                                  {dhikalaSchedule.statusLabel}
+                                </span>
+                              ) : table.inclusionText === RESORT_INCLUSION_WITH_CAB ? (
+                                <span className="block text-[0.68rem] font-normal text-stone-500">
+                                  Resort pickup ~60m before gate
+                                </span>
+                              ) : (
+                                <span className="block text-[0.68rem] font-normal text-stone-500">
+                                  Last entry: {selectedSeason.morning.lastEntry}
+                                </span>
+                              )}
+                            </td>
+                            <td className="px-4 py-3 text-sm font-semibold text-zinc-800">
+                              <div>{afternoonShift}</div>
+                              {isDhikala ? (
+                                <span className="block text-[0.68rem] font-normal text-stone-500">
+                                  5.5h Canter Loop
+                                </span>
+                              ) : table.inclusionText === RESORT_INCLUSION_WITH_CAB ? (
+                                <span className="block text-[0.68rem] font-normal text-stone-500">
+                                  Resort pickup ~60m before gate
+                                </span>
+                              ) : (
+                                <span className="block text-[0.68rem] font-normal text-stone-500">
+                                  Last entry: {selectedSeason.afternoon.lastEntry}
+                                </span>
+                              )}
+                            </td>
+                            <td className="px-4 py-3 text-sm text-[color:var(--color-muted)]">
+                              {row.distanceFromRamnagar}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </Table>
                 </div>

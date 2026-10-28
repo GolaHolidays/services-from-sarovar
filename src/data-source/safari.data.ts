@@ -5,6 +5,20 @@ import {
   RESORT_TO_RAMNAGAR,
   CONTACT_CALL_TEXT,
 } from "@/shared/constants/ui.constants";
+import { getFormattedLiveShifts, getDhikalaCanterSchedule } from "@/lib/safari-timings";
+
+const liveShifts = getFormattedLiveShifts();
+const dhikalaSchedule = getDhikalaCanterSchedule();
+
+const generalSafariTiming = {
+  morning: liveShifts.morning,
+  afternoon: liveShifts.afternoon,
+};
+
+const dhikalaCanterTiming = {
+  morning: dhikalaSchedule.activeMorning,
+  afternoon: dhikalaSchedule.activeAfternoon,
+};
 
 export const safariData: SafariData = {
   header: {
@@ -28,7 +42,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,          
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -36,7 +50,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -44,7 +58,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -52,7 +66,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -60,7 +74,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -73,7 +87,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "54 Km | 2 Hours",
             },
             {
@@ -81,7 +95,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -89,7 +103,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -97,7 +111,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "31 Km | 1 Hour",
             },
             {
@@ -105,7 +119,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "28 Km | 1 Hour",
             },
           ],
@@ -125,7 +139,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -133,7 +147,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -141,7 +155,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -149,7 +163,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -157,7 +171,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -170,7 +184,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 8400,
               gstRate: 8820,
-              timing: { morning: "5:30 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "28 Km | 1 Hour",
             },
             {
@@ -178,7 +192,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 8400,
               gstRate: 8820,
-              timing: { morning: "5:30 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -186,7 +200,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 8400,
               gstRate: 8820,
-              timing: { morning: "5:30 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -194,7 +208,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 8400,
               gstRate: 8820,
-              timing: { morning: "5:30 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "31 Km | 1 Hour",
             },
             {
@@ -202,7 +216,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 8400,
               gstRate: 8820,
-              timing: { morning: "5:30 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "54 Km | 2 Hours",
             },
           ],
@@ -223,7 +237,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 10200,
               gstRate: 10710,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -231,7 +245,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 10200,
               gstRate: 10710,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -239,7 +253,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 10600,
               gstRate: 11130,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -247,7 +261,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 10600,
               gstRate: 11130,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -255,7 +269,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 10600,
               gstRate: 11130,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -268,7 +282,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 6200,
               gstRate: 6510,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -276,7 +290,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 6200,
               gstRate: 6510,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -284,7 +298,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 6600,
               gstRate: 6930,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -292,7 +306,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 6600,
               gstRate: 6930,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -300,7 +314,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 6600,
               gstRate: 6930,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -315,14 +329,14 @@ export const safariData: SafariData = {
       subtitle: "INDIAN PRE-BOOKING & CURRENT SAFARI",
       tables: [
         {
-          inclusionText: "Include: Jeep, Guide, Permit, Pickup & Drop from Ramnagar",
+          inclusionText: "Include: Canter Seat, Guide, Permit, Pickup & Drop from Ramnagar",
           rateRows: [
             {
               zone: "Dhikala Zone",
               zoneType: "core",
               rate: 3200,
               gstRate: 3360,
-              timing: { morning: "5:30 to 11:30 AM", afternoon: "12:30 to 7:00 PM" },
+              timing: dhikalaCanterTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -368,7 +382,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 17100,
               gstRate: 17955,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -376,7 +390,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 17100,
               gstRate: 17955,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -384,7 +398,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 17100,
               gstRate: 17955,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -392,7 +406,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 17100,
               gstRate: 17955,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -400,7 +414,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 17100,
               gstRate: 17955,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -413,7 +427,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "28 Km | 1 Hour",
             },
             {
@@ -421,7 +435,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -429,7 +443,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -437,7 +451,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "31 Km | 1 Hour",
             },
             {
@@ -445,7 +459,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "54 Km | 2 Hours",
             },
           ],
@@ -465,7 +479,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 16400,
               gstRate: 17220,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -473,7 +487,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 16400,
               gstRate: 17220,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -481,7 +495,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 16400,
               gstRate: 17220,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -489,7 +503,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 16400,
               gstRate: 17220,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -497,7 +511,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 16400,
               gstRate: 17220,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -510,7 +524,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "6:00 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "28 Km | 1 Hour",
             },
             {
@@ -518,7 +532,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "6:00 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -526,7 +540,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "6:00 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "41 Km | 1.30 Hours",
             },
             {
@@ -534,7 +548,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "6:00 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "31 Km | 1 Hour",
             },
             {
@@ -542,7 +556,7 @@ export const safariData: SafariData = {
               zoneType: "core",
               rate: 12400,
               gstRate: 13020,
-              timing: { morning: "6:00 to 10:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "54 Km | 2 Hours",
             },
           ],
@@ -563,7 +577,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -571,7 +585,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 13100,
               gstRate: 13755,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -579,7 +593,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 13600,
               gstRate: 14280,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -587,7 +601,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 14100,
               gstRate: 14805,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -595,7 +609,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 14100,
               gstRate: 14805,
-              timing: { morning: "4:30 to 10:00 AM", afternoon: "1:30 to 7:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -608,7 +622,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -616,7 +630,7 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 9100,
               gstRate: 9555,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
@@ -625,23 +639,23 @@ export const safariData: SafariData = {
               zoneType: "buffer",
               rate: 9600,
               gstRate: 10080,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
               zone: "Hathidanger Zone",
               zoneType: "buffer",
               rate: 10100,
-              gstRate: 10815,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              gstRate: 10605,
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
             {
               zone: "Phato Zone",
               zoneType: "buffer",
               rate: 10100,
-              gstRate: 10815,
-              timing: { morning: "5:30 to 9:00 AM", afternoon: "2:30 to 6:30 PM" },
+              gstRate: 10605,
+              timing: generalSafariTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],
@@ -656,14 +670,14 @@ export const safariData: SafariData = {
       subtitle: "FOREIGNER PRE-BOOKING & CURRENT SAFARI",
       tables: [
         {
-          inclusionText: "Include: Jeep, Guide, Permit, Pickup & Drop from Ramnagar",
+          inclusionText: "Include: Canter Seat, Guide, Permit, Pickup & Drop from Ramnagar",
           rateRows: [
             {
               zone: "Dhikala Zone",
               zoneType: "core",
               rate: 5000,
               gstRate: 5250,
-              timing: { morning: "5:30 to 11:30 AM", afternoon: "12:30 to 7:00 PM" },
+              timing: dhikalaCanterTiming,
               distanceFromRamnagar: "27 Km | 1 Hour",
             },
           ],

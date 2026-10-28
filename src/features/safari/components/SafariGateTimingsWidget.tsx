@@ -37,6 +37,15 @@ export interface SafariGateTimingsWidgetProps {
    */
   showGateRules?: boolean;
   /**
+  /**
+   * Controlled selected season ID override.
+   */
+  selectedSeasonId?: SeasonId;
+  /**
+   * Callback fired when user switches seasons.
+   */
+  onSeasonChange?: (seasonId: SeasonId) => void;
+  /**
    * Custom CSS container class.
    */
   className?: string;
@@ -44,6 +53,8 @@ export interface SafariGateTimingsWidgetProps {
 
 export function SafariGateTimingsWidget({
   defaultSeason,
+  selectedSeasonId: controlledSeasonId,
+  onSeasonChange,
   showDhikala = true,
   showGateRules = true,
   className = "",
@@ -52,9 +63,15 @@ export function SafariGateTimingsWidget({
   const currentActiveSchedule = getActiveSafariSchedule();
   const currentSeasonId = currentActiveSchedule.id;
 
-  const [selectedSeasonId, setSelectedSeasonId] = useState<SeasonId>(
+  const [internalSeasonId, setInternalSeasonId] = useState<SeasonId>(
     defaultSeason || currentSeasonId
   );
+
+  const selectedSeasonId = controlledSeasonId ?? internalSeasonId;
+  const handleSeasonSelect = (seasonId: SeasonId) => {
+    setInternalSeasonId(seasonId);
+    onSeasonChange?.(seasonId);
+  };
 
   const selectedSeason: SafariSeasonSchedule = SAFARI_SEASONS[selectedSeasonId];
   const dhikalaSchedule = getDhikalaCanterSchedule();
@@ -124,7 +141,7 @@ export function SafariGateTimingsWidget({
                   aria-controls={`${widgetId}-panel-${season.id}`}
                   id={`${widgetId}-tab-${season.id}`}
                   type="button"
-                  onClick={() => setSelectedSeasonId(season.id)}
+                  onClick={() => handleSeasonSelect(season.id)}
                   className={`group relative flex flex-col items-start rounded-xl px-3.5 py-3 text-left transition-all duration-150 ${
                     isSelected
                       ? "border border-emerald-900/30 bg-emerald-950/5 shadow-xs"
